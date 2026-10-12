@@ -1,1 +1,22 @@
-<h1>Olá, teste de rails</h1>
+<h1>Login</h1>
+
+<form action="/login" method="get">
+  <label for="nome">Digite seu nome:</label>
+  <input type="text" id="nome" name="nome">
+
+  <label for="nome">Digite sua senha:</label>
+  <input type="password" id="password" name="password">
+
+  <button type="submit">Enviar</button>
+</form>
+
+
+
+
+<% if @nome.present?%>
+    <p> olá ,<%=@nome%> </p>
+<%end%>
+
+<%if @password.present?%>
+    <p> Sua senha e <%=@password%> </p>
+<%end%>
