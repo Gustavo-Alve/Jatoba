@@ -1,22 +1,33 @@
-<h1>Login</h1>
 
-<form action="/login" method="get">
-  <label for="nome">Digite seu nome:</label>
-  <input type="text" id="nome" name="nome">
+<div class="container">
+    <%= form_with url: login_path, method: :post, class: "formulario" do |form| %>
 
-  <label for="nome">Digite sua senha:</label>
-  <input type="password" id="password" name="password">
+        <h1>Login</h1>
+        <p>Entre com suas credenciais</p>
 
-  <button type="submit">Enviar</button>
-</form>
+        <div class="campo">
+            <%= form.label :usuario, "Usuário" %>
 
+            <%= form.text_field :usuario,
+                placeholder: "Digite seu usuário",
+                autocomplete: "username",
+                required: true%>
+        </div>
 
+        <div class="campo">
+            <%= form.label :senha, "Senha" %>
 
+            <%= form.password_field :senha,
+                placeholder: "Digite sua senha",
+                autocomplete: "current-password",
+                required: true %>
+        </div>
 
-<% if @nome.present?%>
-    <p> olá ,<%=@nome%> </p>
-<%end%>
+        <div class="novo_cadastro">
+            <%= link_to "Criar conta", new_users_path %>
+        </div>
 
-<%if @password.present?%>
-    <p> Sua senha e <%=@password%> </p>
-<%end%>
+        <%= form.submit "Entrar" %>
+
+    <% end %>
+</div>
